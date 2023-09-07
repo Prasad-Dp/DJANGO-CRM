@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'leads:lead-list' %}">Back To Leads</a>
+    <div class="list">
+       Tittle:  {{leads.frist_name}}
+    </div>
+    <div class="list">
+        Director Name:  {{leads.last_name}}
+    </div>
+    <div class="list">
+        Budget:  {{leads.age}}
+    </div>
+    {% if request.user.is_organisor %}
+    <div class="list">
+        Agent:  {{leads.agent}}
+      </div>
+    {% endif %}
+
+    {% if request.user.is_agent %}
+    <div class="list">
+        Organisation:  {{leads.Organisation}}
+    </div>
+    {% endif %}
+    
+    {% if request.user.is_organisor %}
+        <a href="{% url 'leads:lead-update' leads.id %}">Update Lead</a>
+        <a href="{% url 'leads:lead-delete' leads.id %}">Delete Lead</a>
+    {% endif %}
+{% endblock content %}
+    

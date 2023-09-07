@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'agents:agent-create' %}">Create New Agent</a>
+    <h2>These are the list of Agents</h2>
+    {% for agent in agents %}
+        <div class="list">
+            <a href="{% url 'agents:agent-view' agent.id %}">{{agent.user}}</a>
+        </div>
+    {% endfor%}
+  
+{% endblock content %}

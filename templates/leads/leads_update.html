@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Lead info</h2>
+    <h3>{{leads.frist_name}}</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Update</button>
+    </form>
+    
+    <a href="{% url 'leads:lead-list' %}">Skip Update</a>    
+{% endblock content %}

@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1><b> Leads</b></h1>
+<a href="{% url 'leads:category-list' %}">Categories</a><br>
+
+    {% if request.user.is_organisor %}
+        <a href="{% url 'leads:lead-create' %}">Create New Lead</a>
+    {% endif %}
+    <h2>These are the list of Un assigned Leads</h2>
+    {% for lead in unassigned_leads %}
+        <div class="list">
+            <a href="{% url 'leads:lead-view' lead.id %}">{{lead.frist_name}}</a>
+        </div>
+    {% endfor%}
+    <h2>These are the list of Assigned Leads</h2>
+    {% for lead in leads %}
+        <div class="list">
+            <a href="{% url 'leads:lead-view' lead.id %}">{{lead.frist_name}}</a>
+        </div>
+    {% endfor%}
+  
+{% endblock content %}

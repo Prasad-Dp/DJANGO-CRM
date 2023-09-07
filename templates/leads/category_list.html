@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block content %}
+   
+    <h2>These are the list of Category</h2>
+    <table>
+        <tr>
+            <th style="border: 1px solid;">Name</th>
+            <th style="border: 1px solid;">Count</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid;">unassigned</td>
+            <td style="border: 1px solid;">{{unassigned}}</td>
+        </tr>
+        <tr>
+            {% for cat in category %}
+                <td style="border: 1px solid;"><a href="{% url 'leads:category-detail' cat.pk %}">{{cat.name}}</a></td>
+                <td style="border: 1px solid;">0</td>
+            
+            {% endfor %}
+        </tr>
+    </table>
+{% endblock content %}
